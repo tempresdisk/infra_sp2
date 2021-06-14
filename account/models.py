@@ -69,7 +69,7 @@ class CustomUser(AbstractUser):
         }
 
     def natural_key(self):
-        return (self.username,)
+        return (self.email,)
 
     def __str__(self):
         return self.email
