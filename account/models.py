@@ -12,7 +12,7 @@ class CustomAccountManager(BaseUserManager):
             raise TypeError('Users should have a Email')
 
         user = self.model(username=username, email=self.normalize_email(email))
-        user.set_unusable_password()
+        user.set_password(password)
         user.save()
         return user
 
@@ -28,8 +28,8 @@ class CustomAccountManager(BaseUserManager):
         user.save()
         return user
 
-    def get_by_natural_key(self, username):
-        return self.get(username=username)
+    def get_by_natural_key(self, email):
+        return self.get(email=email)
 
 
 class CustomUser(AbstractUser):
